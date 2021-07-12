@@ -1,0 +1,10 @@
+CREATE SCHEMA IF NOT EXISTS `db_driver_sms` DEFAULT CHARACTER SET utf8 ;
+USE `db_driver_sms` ;
+
+CREATE TABLE IF NOT EXISTS `db_driver_sms`.`driver` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `code` SMALLINT NOT NULL DEFAULT 0,
+  `phoneNumber` VARCHAR(11) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `code_UNIQUE` (`code` ASC) VISIBLE)
+ENGINE = InnoDB;

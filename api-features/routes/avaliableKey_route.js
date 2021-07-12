@@ -1,0 +1,22 @@
+const express = require('express')
+const ctrl_avaliableKey = require('../controllers/ctrl_avaliableKey')
+const router = express.Router()
+const verifyJWT =  require('../Middleware/verifyJWT')
+
+ router.post('/addAvaliableKey',verifyJWT,ctrl_avaliableKey.addAvaliableKey)
+ router.post('/deleteAvaliableKey',verifyJWT,ctrl_avaliableKey.deleteAvaliableKey)
+ router.get('/editAvaliableKey/:id',verifyJWT,ctrl_avaliableKey.editAvaliableKey)
+ router.put('/updateAvaliableKey',verifyJWT,ctrl_avaliableKey.updateAvaliableKey)
+ router.get('/allAvaliableKey',verifyJWT,ctrl_avaliableKey.allAvaliableKey)
+ router.post('/reportAvaliableKey',verifyJWT,ctrl_avaliableKey.reportAvaliableKey)
+ router.get('/getAvaliableKey/:number',verifyJWT,ctrl_avaliableKey.getAvaliableKey)
+ router.post('/deleteAllAvaliableKey',verifyJWT,ctrl_avaliableKey.deleteAllAvaliableKey)
+ router.post('/getAvaliableKeyByKeyHolder',verifyJWT,ctrl_avaliableKey.getAvaliableKeyByKeyHolder)
+ router.post('/addGroupOfAvaliableKey',verifyJWT,ctrl_avaliableKey.addGroupOfAvaliableKey)
+ router.put('/controlKey/:keyHolderNumber/:rfid',verifyJWT,ctrl_avaliableKey.UpdateKeys)
+ router.get('/controlKey/:rfid',verifyJWT,ctrl_avaliableKey.VerifyRFIDAssociated)
+ router.put('/clearRFID',verifyJWT,ctrl_avaliableKey.clearRFID)
+ router.get('/getRFID',verifyJWT,ctrl_avaliableKey.getRFID)
+ router.put('/AssociateUserAndRFID/:userId',verifyJWT,ctrl_avaliableKey.AssociateUserAndRFID)
+    
+module.exports = router

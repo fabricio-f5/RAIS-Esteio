@@ -1,0 +1,65 @@
+        exports.ad_msg = 'Registro inserido com sucesso.'
+        exports.de_msg = 'Registro excluido com sucesso.'
+        exports.al_msg = ' registro(s) encontrado(s).'
+        exports.purge_msg = ' registro(s) eliminados(s).'
+        exports.ed_msg = 'Registro encontrado.'
+        exports.up_msg = 'Registro atualizado.'
+        exports.not_up_msg = 'Registro não atualizado. Verifique se o mesmo existe.'
+
+        exports.registerNotFound = 'Registro nao encontrado'
+        exports.emptyBody = 'Nenhum dado encontrado na requisição'
+        exports.UserNotFound = 'Usuário não encontrado no banco de dados. Registre uma nova conta para ter acesso ao sistema.'
+        exports.UserNotFound_FirstLogin = 'Usuário não encontrado no banco de dados, ou já efetuou seu primeiro login.'
+        exports.ProfileNotFound = 'Perfil não encontrado no banco de dados. Registre os perfis de sistema.'
+        exports.PermissionNotDefined = 'Permissões não configuradas para o perfil associado ao usuário.'
+        
+        exports.emailSend = 'E-mail enviado com sucesso. Verifique sua caixa de e-mail.'
+        exports.emailNotSend = 'Erro ao tentar enviar e-mail.'
+        exports.emailConfirmation = 'Clique no link que enviamos para você neste e-mail para confirmação de seu cadastro.'
+        
+        exports.successedLogin = 'Login realizado com sucesso'
+        exports.tokenChangePassword = 'Token eviando para redefinição de senha'
+        exports.successedLogout = 'Logout realizado com sucesso'
+        exports.NotAuthorized = 'Usuário não autorizado.'
+        
+        exports.passwordChanged = 'Senha alterada com sucesso'
+        exports.confirmPassword = 'Confirmação da senha é obrigatório'
+        exports.PasswordNotConfirmed = 'As senhas digitadas não são iguais. Defina a senha novamente.'
+        exports.PasswordValidation = 'A senha deverá conter ao menos uma letra maíuscula, minúscula, números. Mínimo de 6 dígitos e máximo 12.'
+        exports.passwordRequired = 'Senha Obrigatória.'
+        exports.passwordIncorrect = 'Senha incorreta. Tente Novamente.'
+        exports.userNotActivated = 'Usuário desativado pelo Administrador do Sistema.'
+
+        exports.nameRequired = 'Nome é obrigatório.'
+        exports.routeRequired = 'Rota é obrigatório.'
+        exports.statusRequired = 'Status é obrigatório.'
+        exports.cpfRequired = 'CPF é obrigatório.'
+        exports.emailRequired = 'e-mail é obrigatório.'
+        exports.credentialRequired = 'Informe sua credencial para ingressar no sistema'
+        exports.logonUserRequired = 'O identificador para login é obrigatório.'
+        exports.phoneRequired = 'Telefone é obrigatório.'
+        exports.descriptionRequired = 'Descrição é obrigatório.'
+        exports.parameterRequired = 'Parâmetro é obrigatório.'
+        exports.parameterValueRequired = 'Valor do parâmetro é obrigatório.'
+        exports.profileRequired = 'O perfil é obrigatório.'
+        exports.profileAccessLevel = 'A hierarquia de acesso do perfil é obrigatório.'
+
+        exports.identification = 'Identificação do claviculário é obrigatório.'
+        exports.keyHolderNotFound = 'Claviculário não encontrado.'
+        exports.qtdeKey = 'A qtde de chaves do claviculário é obrigatório.'
+        exports.keyNumberRequired = 'O número da chave é obrigatório.'
+        exports.keyDescriptionRequired = 'A descrição da chave é obrigatória.'
+        exports.userNotAssociatedWithRfid = 'Não existe usuário associado ao RFID informado, ou esta em processo de associação.'
+        exports.notUpdatedRFID = 'Falha ao tentar atualizar o RFID no registro do usuário.'
+        exports.noKeysAvaliables = 'Nenhuma chave recebida no corpo da requisição.'
+        exports.statusKeyUpdated = 'O status da(s) chave(s) atualizado(s).'
+        exports.statusKeyUpdatedNotOk = 'Erro na tentativa de atualização do(s) status da(s) chave(s).'
+        exports.noRFIDinMemory = 'Nenhum RFID para associação encontrado.'
+        exports.PurgedRFIDinMemory = 'Área da memória reservada para o RFID foi limpa.'
+        exports.RFIDAssociated = 'O RFID foi associado ao usuário.'
+        
+
+
+
+
+

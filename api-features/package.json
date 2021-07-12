@@ -1,0 +1,32 @@
+{
+  "name": "api-features",
+  "version": "1.0.0",
+  "description": "Esta Api disponibilizara todas as funcionalidades CRUDs",
+  "scripts": {
+    "start-dev": "cross-env NODE_ENV=development nodemon  ./config/config.js",
+    "start-prod": "cross-env NODE_ENV=production node ./config/config.js"
+  },
+  "author": "ATF",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^8.6.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.21.19",
+    "mkcert": "^1.4.0",
+    "moment": "^2.29.1",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5",
+    "node-windows": "^1.0.0-beta.5",
+    "nodemailer": "^6.6.0",
+    "npm": "^7.13.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.26.0"
+  }
+}
