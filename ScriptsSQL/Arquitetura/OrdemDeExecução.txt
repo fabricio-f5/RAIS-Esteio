@@ -1,7 +1,0 @@
-ORDEM DE EXECUÇÃO DOS SCRIPTS 
-1-Script_create_db_webAdd.sql
-2-Script_insert_profile_user.sql
-3-Script_insert_route_registers.sql
-4-Script_insert_permission_registers.sql
-5-Script_insert_config_parameters.sql
-6-Script_insert_ownerUser.sql

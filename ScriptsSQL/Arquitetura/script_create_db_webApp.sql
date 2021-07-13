@@ -1,6 +1,9 @@
+
 DROP SCHEMA IF EXISTS `db_webapp` ;
+
 CREATE SCHEMA IF NOT EXISTS `db_webapp` DEFAULT CHARACTER SET utf8 ;
 USE `db_webapp` ;
+
 DROP TABLE IF EXISTS `db_webapp`.`configparameter` ;
 
 CREATE TABLE IF NOT EXISTS `db_webapp`.`configparameter` (
@@ -15,6 +18,7 @@ AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb3;
 
 DROP TABLE IF EXISTS `db_webapp`.`profile` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`profile` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
@@ -28,6 +32,7 @@ AUTO_INCREMENT = 46
 DEFAULT CHARACTER SET = utf8mb3;
 
 DROP TABLE IF EXISTS `db_webapp`.`route` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`route` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `route` VARCHAR(100) NULL DEFAULT NULL,
@@ -40,12 +45,14 @@ AUTO_INCREMENT = 21
 DEFAULT CHARACTER SET = utf8mb3;
 
 DROP TABLE IF EXISTS `db_webapp`.`permission` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`permission` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `profile_id` BIGINT NOT NULL,
   `Route_id` BIGINT NOT NULL,
   `read` TINYINT(1) NULL DEFAULT '0',
   `write` TINYINT(1) NULL DEFAULT '0',
+  `delete` TINYINT(1) NULL DEFAULT '0',
   PRIMARY KEY (`id`, `profile_id`, `Route_id`),
   INDEX `fk_permission_profile_idx` (`profile_id` ASC),
   INDEX `fk_permission_Route1_idx` (`Route_id` ASC),
@@ -62,6 +69,7 @@ AUTO_INCREMENT = 115
 DEFAULT CHARACTER SET = utf8mb3;
 
 DROP TABLE IF EXISTS `db_webapp`.`user` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`user` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `profile_id` BIGINT NOT NULL,
@@ -89,15 +97,17 @@ AUTO_INCREMENT = 41
 DEFAULT CHARACTER SET = utf8mb3;
 
 DROP TABLE IF EXISTS `db_webapp`.`keyholder` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`keyholder` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `qtdeKeys` VARCHAR(50) NULL DEFAULT 0,
   `identification` VARCHAR(50) NULL,
-  `number` INT NULL DEFAULT 0,
+  `number` INT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 DROP TABLE IF EXISTS `db_webapp`.`avaliablekey` ;
+
 CREATE TABLE IF NOT EXISTS `db_webapp`.`avaliablekey` (
   `id` BIGINT NOT NULL AUTO_INCREMENT,
   `keyHolder_id` BIGINT NOT NULL,
@@ -105,9 +115,7 @@ CREATE TABLE IF NOT EXISTS `db_webapp`.`avaliablekey` (
   `number` INT NOT NULL DEFAULT 0,
   `description` VARCHAR(50) NULL,
   `situation` TINYINT(1) NOT NULL DEFAULT 1,
-  `user` VARCHAR(50) NULL,
-  `sealNumber` VARCHAR(20) NULL,
-  `exception` TINYINT(1) NOT NULL DEFAULT 0,
+  `exception` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`, `keyHolder_id`),
   INDEX `fk_keys_avaliable_key_holder1_idx` (`keyHolder_id` ASC),
   INDEX `fk_keys_avaliable_profile1_idx` (`profile_id` ASC),
@@ -134,9 +142,10 @@ CREATE TABLE IF NOT EXISTS `db_webapp`.`reportkeyholderhistory` (
   `status` TINYINT(1) NULL,
   `authorizedKey` TINYINT(1) NULL,
   `email` VARCHAR(50) NULL,
-  `exception`TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
+
+USE `db_webapp` ;
 
 USE `db_webapp`;
 DROP procedure IF EXISTS `db_webapp`.`linkpermissionWithProfileAndRoute`;
@@ -146,13 +155,21 @@ USE `db_webapp`$$
 CREATE PROCEDURE `linkpermissionWithProfileAndRoute`(IN profile_id INT)
 BEGIN
 
+ 
   DECLARE existe_mais_linhas INT DEFAULT 0;
   DECLARE route_id INT DEFAULT 0;
   DECLARE _internal TINYINT(1) DEFAULT 0;
+  
+ 
   DECLARE meuCursor CURSOR FOR SELECT id,internal FROM db_webapp.route;
-  DECLARE CONTINUE HANDLER FOR NOT FOUND SET existe_mais_linhas=1;
- OPEN meuCursor;
 
+ 
+  DECLARE CONTINUE HANDLER FOR NOT FOUND SET existe_mais_linhas=1;
+
+ 
+  OPEN meuCursor;
+
+ 
   meuLoop: LOOP
 		  FETCH meuCursor INTO route_id,_internal;
 
@@ -162,10 +179,12 @@ BEGIN
 		  END IF;
 			
           IF _internal = 1 THEN   
-			INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`) VALUES (profile_id, route_id,1,1);
+			INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`,`delete`) VALUES (profile_id, route_id,1,1,1);
 		  ELSE
-            INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`) VALUES (profile_id, route_id,0,0);
+            INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`,`delete`) VALUES (profile_id, route_id,0,0,0);
 		  END IF; 
+            
+
 
   END LOOP meuLoop;
 END$$
@@ -194,9 +213,9 @@ BEGIN
 		  END IF;
 		   
           IF internal = 1 OR _profileNumber = 0 THEN 
-				INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`) VALUES (profile_id, route_id,1,1);
+				INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`,`delete`) VALUES (profile_id, route_id,1,1,1);
 		  ELSE 
-				INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`) VALUES (profile_id, route_id,0,0);
+				INSERT INTO `db_webapp`.`permission` (`profile_id`,`Route_id`,`read`,`write`,`delete`) VALUES (profile_id, route_id,0,0,0);
 		  END IF;
 
   END LOOP meuLoop;
@@ -229,5 +248,6 @@ FOR EACH ROW
 BEGIN
  call db_webapp.linkpermissionWithRouteAndProfile(new.id,new.internal);
 END$$
+
 
 DELIMITER ;
