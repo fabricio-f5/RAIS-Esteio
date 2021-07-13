@@ -2,6 +2,7 @@ const model = require('../model/driverSms/model_driverSms')
 const msgs = require('../commons/allMessages')
 
 
+
 exports.allDriver = (req,res) => {
     model.allDriverSms(function(obj) {
         res.status(obj.status).send(obj)
