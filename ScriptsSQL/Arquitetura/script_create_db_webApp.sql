@@ -116,6 +116,8 @@ CREATE TABLE IF NOT EXISTS `db_webapp`.`avaliablekey` (
   `description` VARCHAR(50) NULL,
   `situation` TINYINT(1) NOT NULL DEFAULT 1,
   `exception` TINYINT(1) NULL DEFAULT 0,
+  `sealNumber` INT NOT NULL DEFAULT 0,
+  `user` TEXT NULL,
   PRIMARY KEY (`id`, `keyHolder_id`),
   INDEX `fk_keys_avaliable_key_holder1_idx` (`keyHolder_id` ASC),
   INDEX `fk_keys_avaliable_profile1_idx` (`profile_id` ASC),
