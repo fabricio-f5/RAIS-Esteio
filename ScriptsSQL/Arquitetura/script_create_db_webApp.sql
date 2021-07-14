@@ -142,7 +142,6 @@ CREATE TABLE IF NOT EXISTS `db_webapp`.`reportkeyholderhistory` (
   `keyHolder` VARCHAR(50) NULL,
   `keyNumber` INT NULL,
   `status` TINYINT(1) NULL,
-  `authorizedKey` TINYINT(1) NULL,
   `email` VARCHAR(50) NULL,
   `exception` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`))
