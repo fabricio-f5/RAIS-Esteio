@@ -1,0 +1,38 @@
+1-)Módulo Principal - Ordem Execução Scripts Arquitetura padrão:
+
+	1-script_create_db_webApp
+	2-script_insert_route_registers
+	3-script_insert_profile_user
+	4-script_insert_permission_registers
+	5-script_create_ownerUser
+	6-script_inser_config_parameters
+
+
+2-)Módulo DriverSMS - Ordem execução Scripts Driver SMS
+
+	1-script_create_db_driver_sms
+	2-script_insert_driverSms_route_registers
+	3-script_insert_permission_registers
+	
+3-)Módulo Multiload Control - Ordem execução Scripts Multiload Control
+
+	1-script_create_db_multiload
+	2-script_insert_multiload_route_registers
+	3-script_insert_permission_registers
+	
+4-)Módulo Overfill - Ordem execução Scripts OverFill
+
+	1-db_overfill_create_database
+	2-script_insert_overfill_route_registers
+	3-script_insert_permission_registers
+	4-script_inser_config_parameters
+	5-script_carga_bays
+	6-script_carga_at
+	
+
+	
+
+
+	
+
+
